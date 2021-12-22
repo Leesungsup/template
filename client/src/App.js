@@ -11,6 +11,7 @@ import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import NavBar from './components/views/NavBar/NavBar';
 import RegisterPage from './components/views/ResgisterPage/RegisterPage';
+import Auth from './hoc/auth'
 function App() {
   return (
     <Router>
@@ -27,11 +28,11 @@ function App() {
           of them to render at a time
         */}
         <Routes>
-          <Route exact path="/" element={<LandingPage />}>
+          <Route exact path="/" element={<Auth SpecificComponent={LandingPage} option={null} />}/>
+
+          <Route exact path="/login" element={<Auth SpecificComponent={LoginPage} option={false} />}>
           </Route>
-          <Route exact path="/login" element={<LoginPage />}>
-          </Route>
-          <Route exact path="/register" element={<RegisterPage />}>
+          <Route exact path="/register" element={<Auth SpecificComponent={RegisterPage} option={false} />}>
           </Route>
         </Routes>
       </div>
